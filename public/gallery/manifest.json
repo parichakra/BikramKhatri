@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "src": "/placeholder.svg?height=600&width=600",
+    "alt": "Sketch — Character study",
+    "category": "Sketch",
+    "caption": "Character study — pencil on paper"
+  },
+  {
+    "id": 2,
+    "src": "/placeholder.svg?height=800&width=600",
+    "alt": "Sketch — Architecture concept",
+    "category": "Sketch",
+    "caption": "Architecture concept — ink"
+  },
+  {
+    "id": 3,
+    "src": "/placeholder.svg?height=600&width=800",
+    "alt": "Photo — Golden hour",
+    "category": "Photo",
+    "caption": "Golden hour at the bay"
+  },
+  {
+    "id": 4,
+    "src": "/placeholder.svg?height=600&width=600",
+    "alt": "Sketch — Portrait",
+    "category": "Sketch",
+    "caption": "Portrait study — charcoal"
+  },
+  {
+    "id": 5,
+    "src": "/placeholder.svg?height=600&width=800",
+    "alt": "Photo — Street scene",
+    "category": "Photo",
+    "caption": "Street scene — downtown"
+  },
+  {
+    "id": 6,
+    "src": "/placeholder.svg?height=800&width=600",
+    "alt": "Sketch — Abstract",
+    "category": "Sketch",
+    "caption": "Abstract composition — mixed media"
+  },
+  {
+    "id": 7,
+    "src": "/placeholder.svg?height=600&width=600",
+    "alt": "Photo — Nature",
+    "category": "Photo",
+    "caption": "Morning fog — forest trail"
+  },
+  {
+    "id": 8,
+    "src": "/placeholder.svg?height=600&width=800",
+    "alt": "Sketch — Landscape",
+    "category": "Sketch",
+    "caption": "Landscape — watercolour"
+  },
+
+  {
+    "id": 9,
+    "src": "/profile-image.jpg?height=600&width=800",
+    "alt": "Sketch — Landscape",
+    "category": "Sketch",
+    "caption": "Bikram Khatri"
+  }
+]

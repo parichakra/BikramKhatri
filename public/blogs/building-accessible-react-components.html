@@ -1,0 +1,78 @@
+<article>
+  <p>Accessibility is not an afterthought — it's a core part of building great software. In this post, we'll walk through the practical steps to make your React components work for everyone, including people who rely on screen readers, keyboard navigation, or other assistive technologies.</p>
+
+  <h2>Why Accessibility Matters</h2>
+  <p>Over 1 billion people worldwide live with some form of disability. When we build inaccessible interfaces, we're actively excluding a significant portion of our potential users. Beyond the ethical argument, accessibility also improves SEO, usability for all users, and in many regions is a legal requirement.</p>
+
+  <h2>The Basics: Semantic HTML First</h2>
+  <p>The single most impactful thing you can do is use the right HTML element for the job. A <code>&lt;button&gt;</code> is not a <code>&lt;div&gt;</code>. A <code>&lt;nav&gt;</code> is not a <code>&lt;div&gt;</code>. Semantic elements come with built-in accessibility behaviours — keyboard focus, ARIA roles, and screen reader announcements — for free.</p>
+
+  <pre><code>// ❌ Bad — a div pretending to be a button
+&lt;div onClick={handleClick}&gt;Submit&lt;/div&gt;
+
+// ✅ Good — a real button with all the right behaviours
+&lt;button type="button" onClick={handleClick}&gt;Submit&lt;/button&gt;</code></pre>
+
+  <h2>ARIA Roles and Attributes</h2>
+  <p>When you genuinely can't use a semantic element, ARIA (Accessible Rich Internet Applications) attributes let you communicate intent to assistive technologies. The golden rule: <strong>no ARIA is better than bad ARIA</strong>.</p>
+
+  <p>Common patterns you'll use in React:</p>
+  <ul>
+    <li><code>aria-label</code> — provides a text label when visible text isn't available</li>
+    <li><code>aria-expanded</code> — communicates open/closed state of dropdowns and accordions</li>
+    <li><code>aria-live</code> — announces dynamic content changes to screen readers</li>
+    <li><code>aria-describedby</code> — links an element to a longer description</li>
+    <li><code>role="dialog"</code> — marks modal dialogs so screen readers handle focus correctly</li>
+  </ul>
+
+  <h2>Keyboard Navigation</h2>
+  <p>Every interactive element must be reachable and operable via keyboard alone. This means:</p>
+  <ol>
+    <li>All interactive elements must be focusable (use <code>tabIndex={0}</code> only when necessary)</li>
+    <li>Focus order must follow a logical reading order</li>
+    <li>Custom components must handle <kbd>Enter</kbd>, <kbd>Space</kbd>, and arrow keys where appropriate</li>
+    <li>Modal dialogs must trap focus while open and restore it on close</li>
+  </ol>
+
+  <pre><code>function AccessibleModal({ isOpen, onClose, children }) {
+  const closeRef = useRef(null)
+
+  // Move focus to close button when modal opens
+  useEffect(() => {
+    if (isOpen) closeRef.current?.focus()
+  }, [isOpen])
+
+  if (!isOpen) return null
+
+  return (
+    &lt;div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    &gt;
+      &lt;button ref={closeRef} onClick={onClose} aria-label="Close dialog"&gt;
+        ✕
+      &lt;/button&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}</code></pre>
+
+  <h2>Focus Management in React</h2>
+  <p>React's declarative model can make focus management tricky. When content changes dynamically — a modal opens, a route changes, a form error appears — you need to manually move focus to the right place.</p>
+
+  <p>Use <code>useRef</code> to hold a reference to the element that should receive focus, and call <code>.focus()</code> inside a <code>useEffect</code> that runs when the relevant state changes.</p>
+
+  <h2>Testing Your Work</h2>
+  <p>Don't rely solely on automated tools. They catch roughly 30% of accessibility issues. Here's a practical testing checklist:</p>
+  <ul>
+    <li>Navigate your entire page using only the <kbd>Tab</kbd> key</li>
+    <li>Test with VoiceOver (macOS/iOS) or NVDA (Windows)</li>
+    <li>Run axe DevTools or Lighthouse in Chrome DevTools</li>
+    <li>Check colour contrast ratios with the WebAIM Contrast Checker</li>
+    <li>Zoom to 200% and verify nothing breaks</li>
+  </ul>
+
+  <h2>Wrapping Up</h2>
+  <p>Accessibility is a skill that compounds. Start with semantic HTML, layer in ARIA only when needed, ensure keyboard operability, and test with real assistive technologies. Your users — all of them — will thank you.</p>
+</article>

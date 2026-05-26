@@ -1,0 +1,131 @@
+<article>
+  <p>Most developers discover Framer Motion through simple fade-in animations and stop there. But the library has a much deeper set of capabilities — layout animations, shared element transitions, gesture-driven interactions, and orchestration tools that can make your UI feel genuinely alive. Let's go beyond the basics.</p>
+
+  <h2>Layout Animations</h2>
+  <p>The <code>layout</code> prop is one of Framer Motion's most powerful features. Add it to any element and Framer Motion will automatically animate it whenever its size or position changes — no keyframes needed.</p>
+
+  <pre><code>// This list item will smoothly animate when items are added/removed
+function TodoItem({ todo, onRemove }) {
+  return (
+    &lt;motion.li layout className="todo-item"&gt;
+      {todo.text}
+      &lt;button onClick={() =&gt; onRemove(todo.id)}&gt;Remove&lt;/button&gt;
+    &lt;/motion.li&gt;
+  )
+}</code></pre>
+
+  <p>Wrap the parent in <code>&lt;AnimatePresence&gt;</code> to also animate items as they leave the DOM:</p>
+
+  <pre><code>&lt;AnimatePresence&gt;
+  {todos.map(todo =&gt; (
+    &lt;motion.li
+      key={todo.id}
+      layout
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+    &gt;
+      {todo.text}
+    &lt;/motion.li&gt;
+  ))}
+&lt;/AnimatePresence&gt;</code></pre>
+
+  <h2>Shared Element Transitions with layoutId</h2>
+  <p>The <code>layoutId</code> prop lets you create seamless transitions between two separate elements — like expanding a card into a modal. Framer Motion treats elements with the same <code>layoutId</code> as the same element and animates between their positions and sizes.</p>
+
+  <pre><code>// Card in the grid
+function ProjectCard({ project, onClick }) {
+  return (
+    &lt;motion.div layoutId={`card-${project.id}`} onClick={onClick}&gt;
+      &lt;motion.img layoutId={`image-${project.id}`} src={project.image} /&gt;
+      &lt;motion.h3 layoutId={`title-${project.id}`}&gt;{project.title}&lt;/motion.h3&gt;
+    &lt;/motion.div&gt;
+  )
+}
+
+// Expanded modal — same layoutIds, different position/size
+function ProjectModal({ project, onClose }) {
+  return (
+    &lt;motion.div layoutId={`card-${project.id}`} className="modal"&gt;
+      &lt;motion.img layoutId={`image-${project.id}`} src={project.image} /&gt;
+      &lt;motion.h3 layoutId={`title-${project.id}`}&gt;{project.title}&lt;/motion.h3&gt;
+      &lt;p&gt;{project.description}&lt;/p&gt;
+    &lt;/motion.div&gt;
+  )
+}</code></pre>
+
+  <h2>Gesture-Driven Interactions</h2>
+  <p>Framer Motion has first-class support for drag, hover, tap, and pan gestures. These integrate directly with the animation system.</p>
+
+  <pre><code>// Draggable card with snap-back
+&lt;motion.div
+  drag
+  dragConstraints={{ left: -100, right: 100, top: -50, bottom: 50 }}
+  dragElastic={0.2}
+  whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+&gt;
+  Drag me
+&lt;/motion.div&gt;</code></pre>
+
+  <h2>Scroll-Driven Animations with useScroll</h2>
+  <p>The <code>useScroll</code> hook gives you a reactive scroll progress value you can map to any animatable property using <code>useTransform</code>.</p>
+
+  <pre><code>function ParallaxHero() {
+  const { scrollY } = useScroll()
+  const y = useTransform(scrollY, [0, 500], [0, -150])
+  const opacity = useTransform(scrollY, [0, 300], [1, 0])
+
+  return (
+    &lt;section&gt;
+      &lt;motion.div style={{ y, opacity }} className="hero-bg" /&gt;
+      &lt;motion.h1 style={{ y: useTransform(scrollY, [0, 300], [0, -50]) }}&gt;
+        Hello World
+      &lt;/motion.h1&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+
+  <h2>Orchestrating Complex Sequences with variants</h2>
+  <p>Variants let you define named animation states and propagate them through a component tree. The parent controls when children animate using <code>staggerChildren</code> and <code>delayChildren</code>.</p>
+
+  <pre><code>const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+}
+
+function AnimatedList({ items }) {
+  return (
+    &lt;motion.ul variants={container} initial="hidden" animate="show"&gt;
+      {items.map(i =&gt; (
+        &lt;motion.li key={i.id} variants={item}&gt;
+          {i.text}
+        &lt;/motion.li&gt;
+      ))}
+    &lt;/motion.ul&gt;
+  )
+}</code></pre>
+
+  <h2>Performance Tips</h2>
+  <ul>
+    <li>Animate only <code>transform</code> and <code>opacity</code> — they don't trigger layout recalculation</li>
+    <li>Use <code>will-change: transform</code> sparingly on elements that animate frequently</li>
+    <li>Prefer <code>useMotionValue</code> + <code>useTransform</code> over state-driven animations for scroll effects — they bypass React re-renders entirely</li>
+    <li>Use <code>layout="position"</code> instead of <code>layout</code> when you only need position animation, not size</li>
+  </ul>
+
+  <h2>Wrapping Up</h2>
+  <p>Framer Motion rewards investment. The more you understand its model — variants, layout animations, motion values — the more expressive and performant your animations become. Start with one pattern from this post and integrate it into a real project. That's the fastest way to make it stick.</p>
+</article>

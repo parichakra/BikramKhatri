@@ -1,0 +1,95 @@
+<article>
+  <p>Hello everyone, In this chapter I wanna teach you how to sketchc </p>
+
+  <h2>The Big Changes at a Glance</h2>
+  <ul>
+    <li><strong>Turbopack is now stable</strong> for development — significantly faster HMR</li>
+    <li><strong>Caching defaults flipped</strong> — fetch requests are no longer cached by default</li>
+    <li><strong>Partial Prerendering (PPR)</strong> is available as an opt-in feature</li>
+    <li><strong>React 19 support</strong> — including the new <code>use()</code> hook and Server Actions improvements</li>
+    <li><strong><code>after()</code> API</strong> — run code after a response has been sent</li>
+  </ul>
+
+  <h2>Turbopack for Development</h2>
+  <p>Turbopack replaces Webpack as the default dev bundler. You don't need to do anything — running <code>next dev</code> now uses Turbopack automatically. The improvement is dramatic on large codebases: cold starts that took 8–10 seconds now take under 2.</p>
+
+  <pre><code># Next.js 15 — Turbopack is the default
+next dev
+
+# If you need to opt out for any reason
+next dev --no-turbopack</code></pre>
+
+  <h2>Caching Defaults Have Changed</h2>
+  <p>This is the most breaking change. In Next.js 14, <code>fetch()</code> calls in Server Components were cached by default. In Next.js 15, they are <strong>not cached by default</strong>. This means your pages will be dynamic unless you explicitly opt into caching.</p>
+
+  <pre><code>// Next.js 14 — cached by default (force-cache)
+const data = await fetch('https://api.example.com/data')
+
+// Next.js 15 — NOT cached by default (no-store)
+const data = await fetch('https://api.example.com/data')
+
+// To cache in Next.js 15, be explicit:
+const data = await fetch('https://api.example.com/data', {
+  cache: 'force-cache',
+  // or use revalidation:
+  next: { revalidate: 3600 }
+})</code></pre>
+
+  <h2>Partial Prerendering (PPR)</h2>
+  <p>PPR is the most exciting architectural addition. It lets you render a static shell of a page at build time, then stream in dynamic parts at request time — all from a single route, with no extra configuration per component.</p>
+
+  <p>Enable it in <code>next.config.mjs</code>:</p>
+
+  <pre><code>const nextConfig = {
+  experimental: {
+    ppr: 'incremental',
+  },
+}
+
+export default nextConfig</code></pre>
+
+  <p>Then opt individual routes in:</p>
+
+  <pre><code>// app/dashboard/page.tsx
+export const experimental_ppr = true
+
+export default function Dashboard() {
+  return (
+    &lt;div&gt;
+      &lt;StaticHeader /&gt;       {/* rendered at build time */}
+      &lt;Suspense fallback={&lt;Skeleton /&gt;}&gt;
+        &lt;DynamicFeed /&gt;      {/* streamed at request time */}
+      &lt;/Suspense&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+
+  <h2>The new <code>after()</code> API</h2>
+  <p>Sometimes you need to do work after a response is sent — logging, analytics, cache warming — without blocking the user. The new <code>after()</code> function handles exactly this:</p>
+
+  <pre><code>import { after } from 'next/server'
+
+export async function POST(request) {
+  const data = await request.json()
+  const result = await saveToDatabase(data)
+
+  // This runs after the response is sent
+  after(async () => {
+    await logAnalyticsEvent('form_submitted', data)
+  })
+
+  return Response.json(result)
+}</code></pre>
+
+  <h2>Migration Checklist</h2>
+  <ol>
+    <li>Run <code>npx @next/codemod@canary upgrade latest</code> to auto-migrate most breaking changes</li>
+    <li>Audit all <code>fetch()</code> calls — add explicit <code>cache</code> options where needed</li>
+    <li>Check <code>cookies()</code>, <code>headers()</code>, and <code>params</code> — they're now async in Next.js 15</li>
+    <li>Update <code>next.config.js</code> to <code>next.config.mjs</code> if you haven't already</li>
+    <li>Test your app with Turbopack and report any issues to the Next.js team</li>
+  </ol>
+
+  <h2>Wrapping Up</h2>
+  <p>Next.js 15 is a solid release. The caching change is the most disruptive but also the most honest — explicit is better than implicit. PPR is genuinely exciting and worth experimenting with on your next project.</p>
+</article>
