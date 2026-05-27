@@ -9,13 +9,13 @@ import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
 
 const allProjects = [
-  {
+  { 
     id: 1,
-    title: "E-Commerce Dashboard",
+    title: "E-Learning Project",
     description:
-      "A comprehensive dashboard for e-commerce businesses with analytics, inventory management, and order processing.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Next.js", "Tailwind CSS", "Chart.js"],
+      "A comprehensive E-learning Project  for college/school businesses with CMS, learning management,video conferencing and Content Recommendation.",
+    image: "/E-sikshya.png?height=400&width=600",
+    tags: ["React", "Python", "Django", "Panda"],
     demoUrl: "https://example.com",
     repoUrl: "https://github.com",
     category: "Web App",
@@ -23,10 +23,10 @@ const allProjects = [
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A productivity app for managing tasks, projects, and team collaboration with real-time updates.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Firebase", "Tailwind CSS", "TypeScript"],
+    title: "Okhati",
+    description: "A Medicine management app for listing, updating, reminding , recording medicine record for patients",
+    image: "/Okhati.png?height=400&width=600",
+    tags: ["Java", "Kotlin", "Tailwind CSS"],
     demoUrl: "https://example.com",
     repoUrl: "https://github.com",
     category: "Web App",
@@ -34,11 +34,11 @@ const allProjects = [
   },
   {
     id: 3,
-    title: "Travel Blog Platform",
+    title: "ChhitoJam",
     description:
-      "A content management system for travel bloggers with rich text editing, image galleries, and SEO tools.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "Sanity CMS", "Tailwind CSS", "Vercel"],
+      "A multi agent reinforcement learning traffic light time management system with real time monitorizing and optimization",
+    image: "/ChhitoJam.png?height=400&width=600",
+    tags: ["Sumo", "Reenforcement Learnig", "Django", "React"],
     demoUrl: "https://example.com",
     repoUrl: "https://github.com",
     category: "CMS",
@@ -46,39 +46,28 @@ const allProjects = [
   },
   {
     id: 4,
-    title: "Fitness Tracking App",
+    title: "Employee Management System",
     description:
-      "A mobile-first web application for tracking workouts, nutrition, and fitness progress with data visualization.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
-    demoUrl: "https://example.com",
+      "A java based Learning project that manage employee records, payroll , attendance etc",
+    image: "/EMS.png?height=400&width=600",
+    tags: ["Java", "SpringBoot", "mysql", "mybatis"],
+    demoUrl: "https://github.com/parichakra/employee-management-system",
     repoUrl: "https://github.com",
     category: "Web App",
     featured: false,
   },
   {
     id: 5,
-    title: "Weather Dashboard",
-    description: "A real-time weather dashboard with forecasts, historical data, and location-based weather alerts.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "OpenWeather API", "Chart.js", "Geolocation"],
+    title: "Tithi Miti",
+    description: "A nepai to english date conversion system that convert english date to nepali.",
+    image: "/dateconversion.png?height=400&width=600",
+    tags: ["Java"],
     demoUrl: "https://example.com",
-    repoUrl: "https://github.com",
-    category: "Dashboard",
+    repoUrl: "https://github.com/parichakra/NepaliEnglishDateConverter",
+    category: "Package",
     featured: false,
   },
-  {
-    id: 6,
-    title: "Recipe Sharing Platform",
-    description:
-      "A community-driven platform for sharing, discovering, and saving recipes with user ratings and comments.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "Supabase", "Tailwind CSS", "Authentication"],
-    demoUrl: "https://example.com",
-    repoUrl: "https://github.com",
-    category: "Web App",
-    featured: true,
-  },
+
 ]
 
 const categories = ["All", ...Array.from(new Set(allProjects.map((p) => p.category)))]
