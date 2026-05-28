@@ -30,7 +30,7 @@ export default function Footer() {
               <span>Khatri</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Frontend developer crafting beautiful, accessible, and performant web experiences.
+              Software developer crafting beautiful, accessible, and performant web experiences.
             </p>
           </div>
 
