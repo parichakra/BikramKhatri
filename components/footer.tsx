@@ -81,16 +81,6 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; {currentYear} parichakra. All rights reserved.
           </p>
-          {/* <p className="text-xs text-muted-foreground">
-            Built with{" "}
-            <Link href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent">
-              Next.js
-            </Link>{" "}
-            &amp;{" "}
-            <Link href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent">
-              Tailwind CSS
-            </Link>
-          </p> */}
         </div>
       </div>
     </footer>
