@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Linkedin, Twitter } from "lucide-react"
+import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react"
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -11,8 +11,10 @@ const navLinks = [
 ]
 
 const socials = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/parichakra", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/parichakra", label: "LinkedIn" },
+  { icon: Facebook, href: "https://www.facebook.com/veekram.khatri", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/amiibikram/", label: "Instagram" },
   { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
 ]
 
@@ -78,16 +80,6 @@ export default function Footer() {
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
             &copy; {currentYear} parichakra. All rights reserved.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Built with{" "}
-            <Link href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent">
-              Next.js
-            </Link>{" "}
-            &amp;{" "}
-            <Link href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent">
-              Tailwind CSS
-            </Link>
           </p>
         </div>
       </div>
