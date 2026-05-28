@@ -36,7 +36,7 @@ export default async function BlogSection() {
                 Thoughts &amp; Tutorials
               </h2>
               <p className="mt-2 text-muted-foreground">
-                Writing about frontend development, design, and the web.
+                Writing about backend development, design, and the web.
               </p>
             </div>
             {posts.length > 3 && (
