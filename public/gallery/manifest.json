@@ -1,59 +1,61 @@
 [
   {
     "id": 1,
-    "src": "/placeholder.svg?height=600&width=600",
-    "alt": "Sketch — Character study",
-    "category": "Sketch",
-    "caption": "Character study — pencil on paper"
-  },
-  {
-    "id": 2,
-    "src": "/placeholder.svg?height=800&width=600",
-    "alt": "Sketch — Architecture concept",
-    "category": "Sketch",
-    "caption": "Architecture concept — ink"
-  },
-  {
-    "id": 3,
-    "src": "/placeholder.svg?height=600&width=800",
-    "alt": "Photo — Golden hour",
+    "src": "/gallery/pokhara.jpg?height=540&width=960",
+    "alt": "Pokhara — The mountain",
     "category": "Photo",
-    "caption": "Golden hour at the bay"
+    "caption": "The mountains— Annapurna Range with Macchapurche"
   },
+    {
+    "id": 10,
+    "src": "/gallery/birendranagar8.jpg?height=600&width=800",
+    "alt": "Nature — Landscape",
+    "category": "Photo",
+    "caption": "Birendranangar"
+  },
+ 
   {
     "id": 4,
-    "src": "/placeholder.svg?height=600&width=600",
-    "alt": "Sketch — Portrait",
-    "category": "Sketch",
-    "caption": "Portrait study — charcoal"
-  },
-  {
-    "id": 5,
-    "src": "/placeholder.svg?height=600&width=800",
-    "alt": "Photo — Street scene",
-    "category": "Photo",
-    "caption": "Street scene — downtown"
+    "src": "/gallery/birendranagar7-paniGhatta.jpg?height=600&width=600",
+    "alt": "Pani Ghatta — Photo",
+    "category": "Lifestyle",
+    "caption": "Pani Ghatta — life"
   },
   {
     "id": 6,
-    "src": "/placeholder.svg?height=800&width=600",
+    "src": "/gallery/sketching-kakrebihar.jpeg?height=800&width=600",
     "alt": "Sketch — Abstract",
     "category": "Sketch",
     "caption": "Abstract composition — mixed media"
   },
+   {
+    "id": 3,
+    "src": "/gallery/birendranagar1.jpg?height=300&width=400",
+    "alt": "Birendranagar — Golden hour",
+    "category": "Photo",
+    "caption": "Birendranagar-Golden hour "
+  },
+  {
+    "id": 5,
+    "src": "/gallery/birendranagar2.jpg?height=600&width=800",
+    "alt": "Photo — Birendranager scene",
+    "category": "Photo",
+    "caption": "valley scene — downtown"
+  },
+  
   {
     "id": 7,
-    "src": "/placeholder.svg?height=600&width=600",
-    "alt": "Photo — Nature",
+    "src": "/gallery/sketching-ballPen.jpeg?height=600&width=600",
+    "alt": "Sketch — BallPen",
     "category": "Photo",
-    "caption": "Morning fog — forest trail"
+    "caption": "Ball Pen — Sketch"
   },
   {
     "id": 8,
-    "src": "/placeholder.svg?height=600&width=800",
+    "src": "/gallery/eye-sketching.webp?height=600&width=800",
     "alt": "Sketch — Landscape",
     "category": "Sketch",
-    "caption": "Landscape — watercolour"
+    "caption": "Ballpen — watercolour"
   },
 
   {
@@ -62,5 +64,12 @@
     "alt": "Sketch — Landscape",
     "category": "Sketch",
     "caption": "Bikram Khatri"
+  },
+   {
+    "id": 2,
+    "src": "/gallery/pokharaaa.jpg?height=600&width=300",
+    "alt": "Silhut — Pokhara Fewa lake",
+    "category": "Photo",
+    "caption": "Fewa Lake — pokhara"
   }
 ]
