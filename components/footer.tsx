@@ -2,12 +2,12 @@ import Link from "next/link"
 import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react"
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Blog", href: "#blog" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/#home" },
+  { name: "About", href: "/#about" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Blog", href: "/#blog" },
+  { name: "Gallery", href: "/#gallery" },
+  { name: "Contact", href: "/#contact" },
 ]
 
 const socials = [
