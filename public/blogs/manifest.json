@@ -1,30 +1,12 @@
 [
-  {
-    "slug": "building-accessible-react-components",
-    "title": "Building Accessible React Components from Scratch",
-    "excerpt": "A deep dive into ARIA roles, keyboard navigation, and screen reader support — everything you need to make your React components truly accessible.",
-    "tag": "Accessibility",
-    "date": "Apr 10, 2026",
-    "readTime": "8 min read",
-    "cover": "/placeholder.svg"
-  },
-  {
-    "slug": "nextjs-15-app-router-whats-new",
-    "title": "Next.js 15 App Router: What's New and How to Migrate",
-    "excerpt": "A practical guide to the latest features in Next.js 15, including improved caching, partial prerendering, and the new turbopack bundler.",
-    "tag": "Next.js",
-    "date": "Mar 22, 2026",
-    "readTime": "12 min read",
-    "cover": "/placeholder.svg"
-  },
-  {
-    "slug": "mastering-framer-motion-advanced-patterns",
-    "title": "Mastering Framer Motion: Advanced Animation Patterns",
-    "excerpt": "Go beyond basic fade-ins. Learn layout animations, shared element transitions, and gesture-driven interactions with Framer Motion.",
-    "tag": "Animation",
-    "date": "Feb 14, 2026",
+    {
+    "slug": "chess-addiction",
+    "title": "The Quiet Obsession: Understanding Chess Addiction",
+    "excerpt": "A blog post on when a beautiful game becomes something darker.",
+    "tag": "Game | Addiction",
+    "date": "May 29, 2026",
     "readTime": "10 min read",
-    "cover": "/placeholder.svg"
+    "cover": "/gallery/chess-addiction.jpeg"
   },
   {
     "slug": "mastering-Sketching",
