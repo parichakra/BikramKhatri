@@ -8,12 +8,12 @@ import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Blog", href: "#blog" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/#home" },
+  { name: "About", href: "/#about" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Blog", href: "/#blog" },
+  { name: "Gallery", href: "/#gallery" },
+  { name: "Contact", href: "/#contact" },
 ]
 
 export default function Header() {
