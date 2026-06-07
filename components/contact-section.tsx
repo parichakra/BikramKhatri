@@ -25,6 +25,7 @@ const socials = [
 export default function ContactSection() {
   const { toast } = useToast()
   const sectionRef = useRef<HTMLElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
@@ -37,13 +38,14 @@ export default function ContactSection() {
     const formData = new FormData(event.currentTarget)
     const name = formData.get("name") as string
     const email = formData.get("email") as string
+    const subject = formData.get("subject") as string
     const message = formData.get("message") as string
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, subject, message }),
       })
 
       const data = await response.json()
@@ -57,7 +59,7 @@ export default function ContactSection() {
         description: "Thank you for reaching out. I'll get back to you soon.",
       })
 
-      event.currentTarget.reset()
+      formRef.current?.reset()
     } catch (error) {
       const msg = error instanceof Error ? error.message : "Failed to send message. Please try again."
       setFormError(msg)
@@ -156,7 +158,7 @@ export default function ContactSection() {
                   <CardDescription>Fill out the form and I&apos;ll get back to you within 24 hours.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium">
