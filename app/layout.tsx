@@ -19,15 +19,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://parichakra.dev",
-    title: "Bikram Khatri | java Developer",
+    url: "https://bikramkhatri.com.np",
+    title: "Bikram Khatri ",
     description:
       "Professional portfolio of Bikram Khatri — a java developer specializing in Spring Framework, Spring AI, and modern web experiences.",
     siteName: "Bikram Khatri Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bikram Khatri | java Developer",
+    title: "Bikram Khatri ",
     description:
       "Professional portfolio of Bikram Khatri — a java developer specializing in Spring framework, Spring AI, and modern web experiences.",
     creator: "@parichakra",
