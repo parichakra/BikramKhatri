@@ -10,36 +10,79 @@ import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
+const BASE_URL = "https://bikramkhatri.com.np"
+
 export const metadata: Metadata = {
-  title: "Bikram Khatri | Portfolio",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Bikram Khatri | Portfolio",
+    template: "%s | Bikram Khatri",
+  },
   description:
-    "Professional portfolio of Bikram Khatri — a java developer specializing in Spring, Spring AI, and modern web experiences.",
-  keywords: ["java developer", "It engineer", "Spring boot", "web development", "portfolio", "typescript"],
-  authors: [{ name: "Bikram Khatri" }],
+    "Portfolio of Bikram Khatri — Java Developer & Software Engineer specializing in Spring Boot, Spring AI, and modern web development.",
+  keywords: [
+    "Bikram Khatri",
+    "Java Developer",
+    "Software Engineer",
+    "Spring Boot",
+    "Spring AI",
+    "Web Development",
+    "Portfolio",
+    "TypeScript",
+    "Next.js",
+    "Nepal",
+  ],
+  authors: [{ name: "Bikram Khatri", url: BASE_URL }],
+  creator: "Bikram Khatri",
+  publisher: "Bikram Khatri",
+  category: "Technology",
   icons: {
     icon: "/profile-image.jpg",
     shortcut: "/profile-image.jpg",
     apple: "/profile-image.jpg",
   },
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bikramkhatri.com.np",
+    url: BASE_URL,
     title: "Bikram Khatri | Portfolio",
     description:
-      "Professional portfolio of Bikram Khatri — a java developer specializing in Spring Framework, Spring AI, and modern web experiences.",
+      "Portfolio of Bikram Khatri — Java Developer & Software Engineer specializing in Spring Boot, Spring AI, and modern web development.",
     siteName: "Bikram Khatri Portfolio",
+    images: [
+      {
+        url: "/profile-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Bikram Khatri — Java Developer & Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Bikram Khatri | Portfolio",
     description:
-      "Professional portfolio of Bikram Khatri — a java developer specializing in Spring framework, Spring AI, and modern web experiences.",
+      "Portfolio of Bikram Khatri — Java Developer & Software Engineer specializing in Spring Boot, Spring AI, and modern web development.",
     creator: "@parichakra",
+    images: ["/profile-image.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your Google Search Console verification token here once you have it
+    // google: "your-google-verification-token",
   },
 }
 
@@ -48,9 +91,49 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${BASE_URL}/#person`,
+        name: "Bikram Khatri",
+        url: BASE_URL,
+        image: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/profile-image.jpg`,
+          caption: "Bikram Khatri",
+        },
+        jobTitle: "Java Developer & Software Engineer",
+        description:
+          "Java Developer and Software Engineer specializing in Spring Boot, Spring AI, and modern web development.",
+        sameAs: [
+          "https://github.com/bikramkhatri",
+          "https://linkedin.com/in/bikramkhatri",
+          "https://twitter.com/parichakra",
+        ],
+        knowsAbout: ["Java", "Spring Boot", "Spring AI", "TypeScript", "Next.js", "Web Development"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        url: BASE_URL,
+        name: "Bikram Khatri Portfolio",
+        description:
+          "Portfolio of Bikram Khatri — Java Developer & Software Engineer.",
+        author: { "@id": `${BASE_URL}/#person` },
+        inLanguage: "en-US",
+      },
+    ],
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Suspense>
             <Header />

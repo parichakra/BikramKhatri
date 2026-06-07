@@ -5,8 +5,19 @@ import { getAllPosts } from "@/lib/blog"
 import { Badge } from "@/components/ui/badge"
 
 export const metadata = {
-  title: "Blog | John Doe",
-  description: "Thoughts, tutorials, and deep dives on frontend development.",
+  title: "Blog",
+  description:
+    "Thoughts, tutorials, and deep dives on Java, Spring Boot, web development, and creative topics by Bikram Khatri.",
+  alternates: {
+    canonical: "https://bikramkhatri.com.np/blog",
+  },
+  openGraph: {
+    title: "Blog | Bikram Khatri",
+    description:
+      "Thoughts, tutorials, and deep dives on Java, Spring Boot, web development, and creative topics.",
+    url: "https://bikramkhatri.com.np/blog",
+    images: [{ url: "/profile-image.jpg", width: 1200, height: 630, alt: "Bikram Khatri Blog" }],
+  },
 }
 
 const tagColors: Record<string, string> = {
