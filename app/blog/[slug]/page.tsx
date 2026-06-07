@@ -18,9 +18,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await getPost(slug)
   if (!post) return { title: "Post not found" }
+
+  const url = `https://bikramkhatri.com.np/blog/${slug}`
+  const ogImage = post.cover
+    ? { url: post.cover, width: 1200, height: 630, alt: post.title }
+    : { url: "/profile-image.jpg", width: 1200, height: 630, alt: post.title }
+
   return {
-    title: `${post.title} | John Doe`,
+    title: post.title,
     description: post.excerpt,
+    authors: [{ name: "Bikram Khatri", url: "https://bikramkhatri.com.np" }],
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "article",
+      url,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.date,
+      authors: ["Bikram Khatri"],
+      tags: [post.tag],
+      images: [ogImage],
+      siteName: "Bikram Khatri Portfolio",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      creator: "@parichakra",
+      images: [ogImage.url],
+    },
   }
 }
 
@@ -30,8 +58,38 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post || !content) notFound()
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Bikram Khatri",
+      url: "https://bikramkhatri.com.np",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Bikram Khatri",
+      url: "https://bikramkhatri.com.np",
+    },
+    url: `https://bikramkhatri.com.np/blog/${slug}`,
+    ...(post.cover ? { image: post.cover } : {}),
+    keywords: post.tag,
+    inLanguage: "en-US",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://bikramkhatri.com.np/blog/${slug}`,
+    },
+  }
+
   return (
     <main className="min-h-screen bg-background pb-24 pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Back */}
         <Link
