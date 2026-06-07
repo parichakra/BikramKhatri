@@ -11,23 +11,28 @@ import { Suspense } from "react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Bikram Khatri | Java Developer",
+  title: "Bikram Khatri | Portfolio",
   description:
     "Professional portfolio of Bikram Khatri — a java developer specializing in Spring, Spring AI, and modern web experiences.",
   keywords: ["java developer", "It engineer", "Spring boot", "web development", "portfolio", "typescript"],
   authors: [{ name: "Bikram Khatri" }],
+  icons: {
+    icon: "/profile-image.jpg",
+    shortcut: "/profile-image.jpg",
+    apple: "/profile-image.jpg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://parichakra.dev",
-    title: "Bikram Khatri | java Developer",
+    url: "https://bikramkhatri.com.np",
+    title: "Bikram Khatri | Portfolio",
     description:
       "Professional portfolio of Bikram Khatri — a java developer specializing in Spring Framework, Spring AI, and modern web experiences.",
     siteName: "Bikram Khatri Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bikram Khatri | java Developer",
+    title: "Bikram Khatri | Portfolio",
     description:
       "Professional portfolio of Bikram Khatri — a java developer specializing in Spring framework, Spring AI, and modern web experiences.",
     creator: "@parichakra",
